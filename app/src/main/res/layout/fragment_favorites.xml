@@ -12,6 +12,12 @@
         android:background="@color/black">
 
         <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo" />
+
+        <ImageView
             android:id="@+id/favorites_select"
             android:layout_width="30dp"
             android:layout_height="30dp"
