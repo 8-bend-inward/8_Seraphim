@@ -211,7 +211,16 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
                             UpdataContact(sort_Lesserafim, FavoritesAdapter.listViewType)
                             true
                         }
+                        R.id.PhoneBook ->{
+                            if (!isContactDataLoaded) {
+                                Log.d("contact", "btnaddmember isContactDataLoaded = $isContactDataLoaded")
+                                requestContactsPermission()
 
+                            } else {
+                                refreshContactList()
+                            }
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -220,13 +229,6 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
         }
 
         binding.btnaddmember.setOnClickListener {
-            if (!isContactDataLoaded) {
-                Log.d("contact", "btnaddmember isContactDataLoaded = $isContactDataLoaded")
-                requestContactsPermission()
-
-            } else {
-                refreshContactList()
-            }
 
             val popUp = AddContactDialogFragment()
             popUp.show((activity as AppCompatActivity).supportFragmentManager, "popUp")
@@ -379,7 +381,7 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
 
     private fun refreshContactList() {
         // RecyclerView 갱신 로직 추가
-        listAdapter?.notifyDataSetChanged()
+        binding.contactListRe.adapter?.notifyDataSetChanged()
     }
 
     //권한 요청 다이얼로그 응답시 수행하는코드
