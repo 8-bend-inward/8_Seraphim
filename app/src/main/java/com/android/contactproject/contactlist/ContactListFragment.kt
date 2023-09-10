@@ -58,6 +58,7 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
                 list[index].isLike = false
             }
 //            listAdapter.notifyDataSetChanged()
+            binding.contactListRe.adapter?.notifyDataSetChanged()
         }
         parentFragmentManager.setFragmentResultListener("FromDialogKey", this) { key, result ->
             val getDialog = result.getParcelableArrayList<AddMemberData>("FromDialog")

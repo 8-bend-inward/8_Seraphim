@@ -23,6 +23,7 @@ import com.android.contactproject.databinding.FragmentFavoritesBinding
 class Favorites : Fragment() {
     private val binding by lazy { FragmentFavoritesBinding.inflate(layoutInflater) }
     private val lesserafimList = arrayListOf<UserDataModel>()
+    private var sort_Lesserafim = arrayListOf<UserDataModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +32,7 @@ class Favorites : Fragment() {
             val lesserafim = result.getParcelableArrayList<UserDataModel>("ToFavorites")
 
             if (lesserafim != null) {
-                val sort_Lesserafim = ArrayList(lesserafim.sortedBy { it.name })
+                sort_Lesserafim = ArrayList(lesserafim.sortedBy { it.name })
                 binding.favoritesRecyclerview.layoutManager =
                     LinearLayoutManager(context)
                 UpdataFavorites(lesserafim, FavoritesAdapter.listViewType)
@@ -110,6 +111,7 @@ class Favorites : Fragment() {
                                                 lesserafimList.clear()
                                                 lesserafimList.add(lesserafim[position])
                                                 lesserafim.removeAt(position)
+                                                sort_Lesserafim = ArrayList(lesserafim.sortedBy { it.name })
                                                 notifyItemRemoved(position)
 
                                                 val bundle = Bundle()
