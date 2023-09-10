@@ -49,7 +49,8 @@ class AddContactDialogFragment : DialogFragment() {
         val lesserafimList = ArrayList<AddMemberData>()
         binding.apply {
             imageButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+                intent.addCategory(Intent.CATEGORY_OPENABLE)
                 intent.type = "image/*"
                 addMemberResult.launch(intent)
             }
