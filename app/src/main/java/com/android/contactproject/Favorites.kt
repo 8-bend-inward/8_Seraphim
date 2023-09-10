@@ -58,10 +58,9 @@ class Favorites : Fragment() {
                             R.id.Sort -> {
                                 binding.favoritesRecyclerview.layoutManager =
                                     LinearLayoutManager(context)
-                                UpdataFavorites(sort_Lesserafim, FavoritesAdapter.listViewType)
+                                UpdataFavorites(sort_Lesserafim,FavoritesAdapter.listViewType)
                                 true
                             }
-
                             else -> false
                         }
                     }
@@ -72,19 +71,19 @@ class Favorites : Fragment() {
         }
 
 
-        val searchView = binding.favoritesSearchView
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.favoritesSearchView.clearFocus()
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-//                filterList(newText)
-                return true
-            }
-        })
+//        val searchView = binding.favoritesSearchView
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                binding.favoritesSearchView.clearFocus()
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+////                filterList(newText)
+//                return true
+//            }
+//        })
 
         return binding.root
     }

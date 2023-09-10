@@ -63,12 +63,12 @@ class ContactListFragment : Fragment() {
         parentFragmentManager.setFragmentResultListener("FromDialogKey", this) { key, result ->
             val getDialog = result.getParcelableArrayList<AddMemberData>("FromDialog")
             Log.d("ContactProjects", "다이얼로그에서 다시 받아온 데이터 : ${getDialog}")
-            if (getDialog != null) {
+            if(getDialog !=null){
                 getDialogList.addAll(getDialog)
             }
             binding.contactListRe2.apply {
                 adapter = ContactListItemAdapter(getDialogList)
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
                 setHasFixedSize(true)
             }
         }
@@ -178,6 +178,7 @@ class ContactListFragment : Fragment() {
                     "유나"
                 )
             )
+
         }
         val sort_Lesserafim = ArrayList(list.sortedBy { it.name })
         binding.contactListRe.layoutManager =
@@ -186,37 +187,33 @@ class ContactListFragment : Fragment() {
         binding.contactSelect.setOnClickListener {
             Log.d("ContactProjects", "버튼눌려지고있냐?")
             val menu = PopupMenu(context, it)
-            menu.menuInflater.inflate(R.menu.menu, menu.menu)
+            menu.menuInflater.inflate(R.menu.contactmenu, menu.menu)
             if (list != null) {
                 menu.setOnMenuItemClickListener {
                     when (it.itemId) {
-                        R.id.ListView -> {
+                        R.id.contact_ListView -> {
                             binding.contactListRe.layoutManager =
                                 LinearLayoutManager(context)
                             UpdataContact(list, FavoritesAdapter.listViewType)
                             true
                         }
 
-                        R.id.GridView -> {
+                        R.id.contact_GridView -> {
                             binding.contactListRe.layoutManager =
                                 GridLayoutManager(context, 3)
                             UpdataContact(list, FavoritesAdapter.gridViewType)
                             true
                         }
 
-                        R.id.Sort -> {
+                        R.id.contact_Sort -> {
                             binding.contactListRe.layoutManager =
                                 LinearLayoutManager(context)
                             UpdataContact(sort_Lesserafim, FavoritesAdapter.listViewType)
                             true
                         }
-
-                        R.id.PhoneBook -> {
+                        R.id.contact_PhoneBook ->{
                             if (!isContactDataLoaded) {
-                                Log.d(
-                                    "contact",
-                                    "btnaddmember isContactDataLoaded = $isContactDataLoaded"
-                                )
+                                Log.d("contact", "btnaddmember isContactDataLoaded = $isContactDataLoaded")
                                 requestContactsPermission()
 
                             } else {
@@ -224,7 +221,6 @@ class ContactListFragment : Fragment() {
                             }
                             true
                         }
-
                         else -> false
                     }
                 }
@@ -316,11 +312,21 @@ class ContactListFragment : Fragment() {
                         // ContactDetailActivity를 시작
                         startActivity(intent)
                     }
-
                 }
-
+            }
+            val itemTouchHelper = when (binding.contactListRe.adapter) {
+                is ContactListFragmentAdapter -> ItemTouchHelper(
+                    SwipeToCall(
+                        requireContext(),
+                        binding.contactListRe.adapter as ContactListFragmentAdapter
+                    )
+                )
+                else -> null
             }
 
+            if (itemTouchHelper != null) {
+                itemTouchHelper.attachToRecyclerView(this)
+            }
         }
     }
 
@@ -368,12 +374,12 @@ class ContactListFragment : Fragment() {
                 val name = cursor.getString(nameIndex)
                 val phoneNumber = cursor.getString(phoneNumberIndex)
 
-                val userData = UserDataModel(0, phoneNumber, name, false)
+                val userData = UserDataModel(R.drawable.jisu, phoneNumber, name, false)
 
                 updatedList.add(userData) // 업데이트된 리스트에 아이템 추가
             }
 
-            list.addAll(updatedList) // 새로운 데이터로 업데이트
+            list.addAll(0,updatedList) // 새로운 데이터로 업데이트
 
             // 데이터를 불러왔으므로 플래그 업데이트
             isContactDataLoaded = true
