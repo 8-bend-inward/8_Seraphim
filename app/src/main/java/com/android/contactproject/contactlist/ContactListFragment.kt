@@ -243,42 +243,22 @@ class ContactListFragment : Fragment() {
                 itemClick = object : ContactListFragmentAdapter.ItemClick {
                     override fun onClick(view: View, position: Int) {
                         val item = list[position]
-                        val builder = AlertDialog.Builder(requireContext())
-                        builder.setTitle("즐겨찾기")
-                        builder.setMessage("즐겨찾기를 하시겠읍니까?")
-                        Log.d("ContactProjects", "되돌아왔을떄 데이터 : ${item}")
-                        val listener = object : DialogInterface.OnClickListener {
-                            override fun onClick(dialog: DialogInterface?, which: Int) {
-                                when (which) {
-                                    DialogInterface.BUTTON_POSITIVE -> {
-                                        item.isLike = !item.isLike
-                                        if (item.isLike) {
-                                            list.removeAt(position)
-                                            list.add(0, item)
-                                            if (!listArray.contains(item)) {
-                                                listArray.add(item)
-                                            }
-                                        } else {
-                                            listArray.remove(item)
-                                        }
-                                        notifyDataSetChanged()
-                                        val bundle = Bundle()
-                                        bundle.putParcelableArrayList("ToFavorites", listArray)
-                                        setFragmentResult("ToFavoritesKey", bundle)
-                                    }
 
-                                    DialogInterface.BUTTON_NEGATIVE -> {
-                                        dialog?.dismiss()
-                                    }
-                                }
+                        item.isLike = !item.isLike
+                        if (item.isLike) {
+                            list.removeAt(position)
+                            list.add(0, item)
+                            if (!listArray.contains(item)) {
+                                listArray.add(item)
                             }
+                        } else {
+                            listArray.remove(item)
                         }
-                        builder.setPositiveButton("확인", listener)
-                        builder.setNegativeButton("취소", listener)
-
-                        builder.show()
+                        notifyDataSetChanged()
+                        val bundle = Bundle()
+                        bundle.putParcelableArrayList("ToFavorites", listArray)
+                        setFragmentResult("ToFavoritesKey", bundle)
                     }
-
 
 
                     override fun onImageLongClick(view: View, position: Int) {
