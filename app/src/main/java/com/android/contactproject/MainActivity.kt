@@ -21,22 +21,6 @@ class MainActivity : AppCompatActivity() {
             tab.text = tabList[position]
         }.attach()
 
-        // tabLayout의 tabItem 찾기
-        for(i in 0 until binding.tabLayout.tabCount) {
-            val tab = binding.tabLayout.getTabAt(i)
-            val tabView = tab?.view
-
-            // 선택한 Tab 스타일 변경
-            if(i == binding.viewPager.currentItem) {
-                tab?.text = tabList[i]
-                tab?.view?.findViewById<com.google.android.material.textview.MaterialTextView>(com.google.android.material.R.id.text)?.setTextColor(resources.getColor(R.color.black))
-            } else {
-                tabView?.setBackgroundResource(R.color.black)
-                tab?.text = tabList[i]
-                tab?.view?.findViewById<com.google.android.material.textview.MaterialTextView>(com.google.android.material.R.id.title)?.setTextColor(resources.getColor(R.color.white))
-            }
-        }
-
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             var currentState = 0
             var currentPosition = 0
@@ -56,23 +40,6 @@ class MainActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 currentPosition = position
                 super.onPageSelected(position)
-
-                // 선택한, 선택하지 않은 tab 바 업데이트
-                for(i in 0 until binding.tabLayout.tabCount) {
-                    val tab = binding.tabLayout.getTabAt(i)
-                    val tabView = tab?.view
-
-                    // 선택한 Tab 스타일 변경
-                    if(i == binding.viewPager.currentItem) {
-                        tabView?.setBackgroundResource(R.color.white)
-                        tab?.text = tabList[i]
-                        tab?.view?.findViewById<com.google.android.material.textview.MaterialTextView>(com.google.android.material.R.id.title)?.setTextColor(resources.getColor(R.color.black))
-                    } else {
-                        tabView?.setBackgroundResource(R.color.black)
-                        tab?.text = tabList[i]
-                        tab?.view?.findViewById<com.google.android.material.textview.MaterialTextView>(com.google.android.material.R.id.title)?.setTextColor(resources.getColor(R.color.white))
-                    }
-                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {
