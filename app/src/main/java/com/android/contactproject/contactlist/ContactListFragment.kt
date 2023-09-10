@@ -33,8 +33,8 @@ import com.android.contactproject.detailPage.ContactDetailActivity
 
 class ContactListFragment : Fragment() {
 
-//    private lateinit var listAdapter: ContactListFragmentAdapter
-private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 null값처리못해서 플로팅버튼눌렀을떄 앱팅깁니다.
+    //    private lateinit var listAdapter: ContactListFragmentAdapter
+    private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 null값처리못해서 플로팅버튼눌렀을떄 앱팅깁니다.
     private var list = arrayListOf<UserDataModel>()
     private val getDialogList = ArrayList<AddMemberData>()
     private var isContactDataLoaded = false
@@ -63,12 +63,12 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
         parentFragmentManager.setFragmentResultListener("FromDialogKey", this) { key, result ->
             val getDialog = result.getParcelableArrayList<AddMemberData>("FromDialog")
             Log.d("ContactProjects", "다이얼로그에서 다시 받아온 데이터 : ${getDialog}")
-            if(getDialog !=null){
+            if (getDialog != null) {
                 getDialogList.addAll(getDialog)
             }
             binding.contactListRe2.apply {
                 adapter = ContactListItemAdapter(getDialogList)
-                layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
             }
         }
@@ -178,7 +178,6 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
                     "유나"
                 )
             )
-
         }
         val sort_Lesserafim = ArrayList(list.sortedBy { it.name })
         binding.contactListRe.layoutManager =
@@ -211,9 +210,13 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
                             UpdataContact(sort_Lesserafim, FavoritesAdapter.listViewType)
                             true
                         }
-                        R.id.PhoneBook ->{
+
+                        R.id.PhoneBook -> {
                             if (!isContactDataLoaded) {
-                                Log.d("contact", "btnaddmember isContactDataLoaded = $isContactDataLoaded")
+                                Log.d(
+                                    "contact",
+                                    "btnaddmember isContactDataLoaded = $isContactDataLoaded"
+                                )
                                 requestContactsPermission()
 
                             } else {
@@ -221,6 +224,7 @@ private var listAdapter: ContactListFragmentAdapter? = null //위에꺼쓰면 nu
                             }
                             true
                         }
+
                         else -> false
                     }
                 }

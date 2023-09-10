@@ -21,15 +21,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/character"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="60dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/man"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -51,21 +49,22 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
                 <ImageButton
                     android:id="@+id/message"
                     android:layout_width="100dp"
                     android:layout_height="140dp"
-                    android:layout_marginTop="360dp"
                     android:layout_marginEnd="60dp"
                     android:backgroundTint="#FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/email"
+                    app:layout_constraintBottom_toBottomOf="@+id/call"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="@+id/call">
 
                 </ImageButton>
 
@@ -74,11 +73,9 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="380dp"
                     android:backgroundTint="#FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/call"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +86,7 @@
                     android:layout_height="90dp"
 
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/detail_box"
                     android:orientation="vertical"
@@ -132,6 +129,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/detail_box"
                     android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
