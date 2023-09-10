@@ -21,31 +21,31 @@ class MainActivity : AppCompatActivity() {
             tab.text = tabList[position]
         }.attach()
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            var currentState = 0
-            var currentPosition = 0
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                if (currentState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position) {
-                    if (currentPosition == 0) binding.viewPager.currentItem = 2
-                    else if (currentPosition == 2) binding.viewPager.currentItem = 0
-                }
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-
-            override fun onPageSelected(position: Int) {
-                currentPosition = position
-                super.onPageSelected(position)
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                currentState = state
-                super.onPageScrollStateChanged(state)
-            }
-        })
+//        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            var currentState = 0
+//            var currentPosition = 0
+//
+//            override fun onPageScrolled(
+//                position: Int,
+//                positionOffset: Float,
+//                positionOffsetPixels: Int
+//            ) {
+//                if (currentState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position) {
+//                    if (currentPosition == 0) binding.viewPager.currentItem = 2
+//                    else if (currentPosition == 2) binding.viewPager.currentItem = 0
+//                }
+//                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+//            }
+//
+//            override fun onPageSelected(position: Int) {
+//                currentPosition = position
+//                super.onPageSelected(position)
+//            }
+//
+//            override fun onPageScrollStateChanged(state: Int) {
+//                currentState = state
+//                super.onPageScrollStateChanged(state)
+//            }
+//        })
     }
 }
