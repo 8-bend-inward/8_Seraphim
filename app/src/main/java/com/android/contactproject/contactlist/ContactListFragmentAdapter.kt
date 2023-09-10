@@ -29,16 +29,6 @@ class ContactListFragmentAdapter(val list: ArrayList<UserDataModel>,private var 
 
     var itemClick: ItemClick? = null
 
-
-//    fun addItem(phoneNumberModel: UserDataModel) {
-//        if (phoneNumberModel == null) {
-//            return
-//        }
-//
-//        list.add(phoneNumberModel)
-//        notifyItemChanged(list.size - 1)
-//    }
-
     companion object {
         const val CALL_PHONE_PERMISSION_REQUEST_CODE = 123
     }

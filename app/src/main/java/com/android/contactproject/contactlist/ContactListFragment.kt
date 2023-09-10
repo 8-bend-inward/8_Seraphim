@@ -21,7 +21,6 @@ import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.android.contactproject.AddContactDialogFragment
 import com.android.contactproject.AddMemberData
 import com.android.contactproject.FavoritesAdapter
@@ -233,20 +232,10 @@ class ContactListFragment : Fragment() {
             val popUp = AddContactDialogFragment()
             popUp.show((activity as AppCompatActivity).supportFragmentManager, "popUp")
         }
-//        initView()
 
         return binding.root
     }
-//    private fun initView() {
-//        binding.contactListRe.layoutManager = LinearLayoutManager(context)
-//        binding.contactListRe.adapter = listAdapter
-//        listAdapter.replace(list)
-//        binding.contactListRe.setHasFixedSize(true)
-//
-//        // ItemTouchHelper를 초기화하고 RecyclerView에 연결
-//        val itemTouchHelper = ItemTouchHelper(SwipeToCall(requireContext(), listAdapter))
-//        itemTouchHelper.attachToRecyclerView(binding.contactListRe)
-//    }
+
 
     fun UpdataContact(list: ArrayList<UserDataModel>, viewType: Int) {
         binding.contactListRe.apply {
@@ -291,16 +280,6 @@ class ContactListFragment : Fragment() {
                     }
 
 
-//              override fun onImageLongClick(view: View, position: Int) {
-//                  val bundle = Bundle()
-//                  val item = list[position]
-//                  bundle.putParcelable("UserData", item)
-//                  val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//                  val contactDetailFragment = ContactDetailFragment()
-//                 contactDetailFragment.arguments = bundle
-//                  transaction.replace(R.id.main_layout, contactDetailFragment)
-//                  transaction.commit()
-//              }
 
                     override fun onImageLongClick(view: View, position: Int) {
                         val item = list[position]
@@ -414,24 +393,6 @@ class ContactListFragment : Fragment() {
             }
         }
     }
-
-//    private fun initView() = with(binding) {
-//
-//        contactListRe.layoutManager = LinearLayoutManager(context)
-//        contactListRe.adapter = listAdapter
-//        listAdapter.replace(list)
-//        contactListRe.setHasFixedSize(true)
-//        // ItemTouchHelper를 초기화하고 RecyclerView에 연결
-//        val itemTouchHelper = ItemTouchHelper(SwipeToCall(requireContext(), listAdapter))
-//        itemTouchHelper.attachToRecyclerView(contactListRe)
-//    }
-//private fun initView() {
-//    binding.contactListRe.layoutManager = LinearLayoutManager(context)
-//    binding.contactListRe.adapter = listAdapter
-//    listAdapter.replace(list)
-//    binding.contactListRe.setHasFixedSize(true)
-//    }
-
 
     override fun onDestroyView() {
         _binding = null

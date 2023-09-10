@@ -106,15 +106,10 @@ class MyPageFragment : Fragment() {
 
             val editTextName = v1.findViewById<EditText>(R.id.dialog_name2)
             val editTextPhoneNumber = v1.findViewById<EditText>(R.id.dialog_phone2)
-            val newPhoneNumber = editTextPhoneNumber.text.toString()
-            binding.myMobile.text = newPhoneNumber
-
 
             // 유효성 필드 완료 후 accept 버튼 활성화 시 필요
             var nameCheck = false
             var phoneCheck = false
-            var inputname: String
-
 
             // name 텍스트 필드 유효성 검사
             editTextName.addTextChangedListener(object : TextWatcher {
@@ -218,9 +213,7 @@ class MyPageFragment : Fragment() {
                 if (selectedBtn == null) {
                     Toast.makeText(context, "알림 버튼을 설정해주세요 !", Toast.LENGTH_SHORT).show()
                 }
-                // 빠른 event 테스트 확인을 위해 잠시 주석 처리함 --------> 완전한 사용시 주석 해제 필요
-                //else if (nameCheck && phoneCheck) {
-                else if (selectedBtn != null) {
+                else if (nameCheck && phoneCheck) {
                     if (selectedBtn == btnOff) {
                         newEvent = "알림 OFF"
                     } else {

@@ -69,22 +69,6 @@ class Favorites : Fragment() {
 
             }
         }
-
-
-//        val searchView = binding.favoritesSearchView
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                binding.favoritesSearchView.clearFocus()
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-////                filterList(newText)
-//                return true
-//            }
-//        })
-
         return binding.root
     }
 
@@ -139,9 +123,4 @@ class Favorites : Fragment() {
             setHasFixedSize(true)
         }
     }
-//    private fun fliterList(query : String?): Boolean{
-//        if(query != null){
-//
-//        }
-//    }
 }
