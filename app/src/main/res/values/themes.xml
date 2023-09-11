@@ -8,5 +8,7 @@
 
 
 
-    <style name="Theme.ContactProject" parent="Base.Theme.ContactProject" />
+    <style name="Theme.ContactProject" parent="Base.Theme.ContactProject">
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/logo</item>
+    </style>
 </resources>

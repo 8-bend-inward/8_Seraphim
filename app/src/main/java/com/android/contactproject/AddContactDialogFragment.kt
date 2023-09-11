@@ -49,7 +49,8 @@ class AddContactDialogFragment : DialogFragment() {
         val lesserafimList = ArrayList<AddMemberData>()
         binding.apply {
             imageButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+                intent.addCategory(Intent.CATEGORY_OPENABLE)
                 intent.type = "image/*"
                 addMemberResult.launch(intent)
             }
@@ -204,10 +205,7 @@ class AddContactDialogFragment : DialogFragment() {
                 if (selectedBtn == null)
                     Toast.makeText(context, "알림 버튼을 설정해주세요 !", Toast.LENGTH_SHORT).show()
             }
-            // 빠른 event 테스트 확인을 위해 잠시 주석 처리함 --------> 완전한 사용시 주석 해제 필요
-            //else if (imageCheck && nameCheck && phoneCheck && addressCheck) {
-            // 위 주석해제시 아래 else if문 제거
-            else if (selectedBtn != null) {
+            else if (imageCheck && nameCheck && phoneCheck && addressCheck) {
                 if (selectedBtn != btnOff) {
                     inputName = name.text.toString()
                     val inputPhone = phone.text.toString()

@@ -57,23 +57,6 @@ val ImageView = findViewById<ImageView>(R.id.character)
             // 메시지 앱 열기
             startActivity(intent)
         }
-
-        // 이벤트가 trur면 보이고 false면 안보이게
-        val EventIntent = intent
-        val Event = EventIntent.getBooleanExtra("Event", false)
-
-        // 보임
-        if (Event == true){
-            val event = binding.Eventlayout
-            event.visibility = View.VISIBLE
-        }
-
-        //숨김
-        else if (Event == false){
-            val event = binding.Eventlayout
-        event.visibility = View.GONE
-        }
-
     }
 }
 

@@ -1,12 +1,10 @@
 package com.android.contactproject.contactlist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.contactproject.AddMemberData
 import com.android.contactproject.databinding.GridTypeItem2Binding
-import com.android.contactproject.databinding.GridTypeItemBinding
 
 class ContactListItemAdapter(private val list: ArrayList<AddMemberData>): RecyclerView
 .Adapter<RecyclerView.ViewHolder>() {
